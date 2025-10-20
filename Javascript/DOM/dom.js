@@ -1,12 +1,7 @@
-let divs = document.querySelectorAll(".box");
+let boxName = document.querySelector(".box");
 
-let idx = 1;
-
-for (div of divs){
-    div.innerText = `new unique box ${idx}`;
-    idx++;
+boxName.onmouseover = () => {
+    boxName.innerHTML = "<i>This is hover</i>";
+    boxName.style.backgroundColor = "green";
+ 
 }
-
-let heading = document.createElement("h1");
-heading.innerText = "this is a test heading";
-document.querySelector("div").append(heading);
