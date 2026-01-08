@@ -32,7 +32,8 @@ body{
     border-radius: 1rem;
     box-shadow: 0 0 1rem rgba(0,0,0,0.3);
     font-size: 8vmin;
-    background-color: burlywood;
+    color: black;
+    background-color: #fff;
 }
 
 .reset-btn{
@@ -59,7 +60,7 @@ body{
 }
 
 .msg-container{
-    height: 80vmin;
+    height: 105vmin;
     display: flex;
     align-items: center;
     justify-content: center;
