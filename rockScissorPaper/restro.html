@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina Dining | Exquisite Flavors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. THEMES & VARIABLES --- */
+        :root {
+            --gold: #c5a059;
+            --dark: #0f172a;
+            --white: #ffffff;
+            --gray: #1a1a1a;
+            --light-gray: #f8fafc;
+            --text-muted: #94a3b8;
+            --transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* This makes the links "glide" */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* --- 2. NAVIGATION BAR --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: 0.4s;
+        }
+
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.98);
+            padding: 15px 8%;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .logo { font-size: 1.8rem; font-weight: bold; letter-spacing: 3px; color: var(--gold); }
+        
+        .nav-links { display: flex; gap: 40px; list-style: none; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.85rem; letter-spacing: 2px; transition: 0.3s; font-weight: 600; }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* --- 3. REVEAL ENGINE --- */
+        .reveal { opacity: 0; transition: var(--transition); }
+        .fade-up { transform: translateY(40px); }
+        .fade-left { transform: translateX(-50px); }
+        .fade-right { transform: translateX(50px); }
+
+        .reveal.active { opacity: 1; transform: translate(0, 0); }
+        .delay-1 { transition-delay: 0.2s; }
+        .delay-2 { transition-delay: 0.4s; }
+
+        /* --- 4. SECTIONS --- */
+        section { padding: 120px 10%; }
+
+        /* Hero */
+        #home {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #home h1 { font-size: 5rem; margin-bottom: 10px; }
+        .btn { 
+            padding: 18px 40px; 
+            border: 1px solid var(--gold); 
+            color: var(--gold); 
+            text-decoration: none; 
+            margin-top: 30px;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            background: transparent;
+            font-size: 0.9rem;
+        }
+        .btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+
+        /* Content Blocks */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 4px;
+            text-align: center;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s;
+        }
+        .service-card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .service-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.5rem; }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .gallery-grid img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(30%); transition: 0.5s; }
+        .gallery-grid img:hover { filter: grayscale(0%); transform: scale(1.02); }
+
+        /* --- 5. FOOTER --- */
+        footer {
+            background: #070b14;
+            padding: 80px 10% 30px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 { color: var(--gold); margin-bottom: 25px; font-size: 1.1rem; letter-spacing: 1px; }
+        .footer-col p, .footer-col li { color: var(--text-muted); margin-bottom: 12px; list-style: none; font-size: 0.9rem; }
+
+        @media (max-width: 992px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            #home h1 { font-size: 3.5rem; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <div class="logo">LUMINA</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#menu">MENU</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <h1 class="reveal fade-up">The Art of Dining</h1>
+        <p class="reveal fade-up delay-1">Experience culinary mastery in every bite.</p>
+        <a href="#menu" class="btn reveal fade-up delay-2">EXPLORE MENU</a>
+    </section>
+
+    <section id="about">
+        <div style="display: flex; align-items: center; gap: 80px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 350px;" class="reveal fade-left">
+                <img src="https://images.unsplash.com/photo-1550966842-3ca5ad567b40?q=80&w=1000&auto=format&fit=crop" style="width: 100%; border-radius: 2px;" alt="Interior">
+            </div>
+            <div style="flex: 1; min-width: 350px;" class="reveal fade-right">
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Our Story</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">Lumina began with a simple vision: to bring world-class flavors to our local community. We believe that a meal is more than just food; it's a memory in the making.</p>
+                <p style="color: var(--text-muted);">Since 2018, we have partnered with local organic farms to ensure every ingredient on your plate was harvested at the peak of freshness.</p>
+                <a href="#" class="btn">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" style="background: #070b14;">
+        <div class="container">
+            <h2 class="reveal fade-up" style="text-align: center; font-size: 3rem;">What We Offer</h2>
+            <div class="grid">
+                <div class="service-card reveal fade-up">
+                    <h3>Private Dining</h3>
+                    <p>Exclusive rooms for your intimate gatherings and celebrations.</p>
+                </div>
+                <div class="service-card reveal fade-up delay-1">
+                    <h3>Catering</h3>
+                    <p>Professional catering services for weddings and corporate events.</p>
+                </div>
+                <div class="service-card reveal fade-up delay-2">
+                    <h3>Wine Cellar</h3>
+                    <p>A curated selection of over 500 vintage labels from around the globe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" style="padding: 0;">
+        <div class="gallery-grid">
+            <img class="reveal fade-up" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=600" alt="Food 1">
+            <img class="reveal fade-up delay-1" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600" alt="Food 2">
+            <img class="reveal fade-up delay-2" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=600" alt="Food 3">
+            <img class="reveal fade-up delay-1" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600" alt="Food 4">
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo" style="margin-bottom: 20px;">LUMINA</div>
+                <p>Bringing the finest culinary experiences to your table. Join us for a night of unforgettable taste and elegance.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home" style="color: inherit; text-decoration: none;">Home</a></li>
+                    <li><a href="#about" style="color: inherit; text-decoration: none;">About Us</a></li>
+                    <li><a href="#menu" style="color: inherit; text-decoration: none;">Menu</a></li>
+                    <li><a href="#services" style="color: inherit; text-decoration: none;">Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>hello@lumina.com</p>
+                <p>+1 (555) 000-1234</p>
+                <p>New York, NY 10001</p>
+            </div>
+            <div class="footer-col">
+                <h4>Hours</h4>
+                <p>Mon - Fri: 5pm - 11pm</p>
+                <p>Sat - Sun: 12pm - 12am</p>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #1e293b; padding-top: 30px; font-size: 0.8rem; color: #4b5563;">
+            &copy; 2026 Lumina Dining Experience. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // 1. Intersection Observer for Scroll Reveals
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 2. Navbar Styling on Scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
