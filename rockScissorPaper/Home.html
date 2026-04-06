@@ -78,7 +78,7 @@
         #home {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1600&auto=format&fit=crop');
+                        url('./images.jpg');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -88,7 +88,7 @@
             text-align: center;
         }
 
-        #home h1 { font-size: 5rem; margin-bottom: 10px; }
+        #home h1 { font-size: 4rem; margin-bottom: 10px; }
         .btn { 
             padding: 18px 40px; 
             border: 1px solid var(--gold); 
@@ -101,6 +101,16 @@
             font-size: 0.9rem;
         }
         .btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+
+        .text-content {
+          max-height: 15em; /* Shows about 2 lines of text */
+          overflow: hidden;
+          transition: max-height 0.3s ease; /* Smooth opening animation */
+        }
+
+        .text-content.expanded {
+          max-height: 1000px; /* Large enough to fit all text */
+        }
 
         /* Content Blocks */
         .grid {
@@ -162,33 +172,35 @@
 <body>
 
     <nav id="navbar">
-        <div class="logo">LUMINA</div>
         <ul class="nav-links">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#menu">MENU</a></li>
-            <li><a href="#services">SERVICES</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-            
+            <li><a href="/Html/Home.html">HOME</a></li>
+            <li><a href="/Html/About.html">ABOUT</a></li>
+            <li><a href="/Html/Cuisine.html">CUISINE</a></li>
+            <li><a href="/Html/Culture.html">CULTURE</a></li>
+            <li><a href="/Html/Festivals.html">FESTIVALS</a></li>
+            <li><a href="/Html/Historical_sites.html">HISTORICAL SITES</a></li>
+            <li><a href="/Html/Sports.html" >SPORTS</a>
+            <li><a href="/Html/Gallery.html">GALLERY</a></li>
+            <li><a href="/Html/Contact.html">CONTACT</a></li> 
         </ul>
     </nav>
 
     <section id="home">
-        <h1 class="reveal fade-up">The Art of Dining</h1>
-        <p class="reveal fade-up delay-1">Experience culinary mastery in every bite.</p>
-        <a href="#menu" class="btn reveal fade-up delay-2">EXPLORE MENU</a>
+        <h1 class="reveal fade-up">Welcome to the vibrant world of Meitei !</h1>
+        <p class="reveal fade-up delay-1">Explore and Experience the world of Meitei right at your fingertips.</p>
+        <a href="#menu" class="btn reveal fade-up delay-2">EXPLORE PLACES</a>
     </section>
 
     <section id="about">
         <div style="display: flex; align-items: center; gap: 80px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 350px;" class="reveal fade-left">
-                <img src="https://images.unsplash.com/photo-1550966842-3ca5ad567b40?q=80&w=1000&auto=format&fit=crop" style="width: 100%; border-radius: 2px;" alt="Interior">
+                <img src="./image1.jpeg" style="width: 100%; border-radius: 2px;" alt="Interior">
             </div>
             <div style="flex: 1; min-width: 350px;" class="reveal fade-right">
-                <h2 style="font-size: 3rem; margin-bottom: 20px;">Our Story</h2>
-                <p style="margin-bottom: 20px; font-size: 1.1rem;">Lumina began with a simple vision: to bring world-class flavors to our local community. We believe that a meal is more than just food; it's a memory in the making.</p>
-                <p style="color: var(--text-muted);">Since 2018, we have partnered with local organic farms to ensure every ingredient on your plate was harvested at the peak of freshness.</p>
-                <a href="#" class="btn">LEARN MORE</a>
+                <h2 style="font-size: 3rem; margin-bottom: 20px;">Introduction</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1rem;" class="text-content" id="text">The Meitei tribe is renowned for its deep-rooted traditions, which are intricately woven into the fabric of daily life. Central to these is Sanamahism, the indigenous religion of the Meitei people, which honors the elements of nature and the ancestors. The tribe celebrates numerous festivals, with Lai Haraoba being the most significant, a grand event that pays homage to the deities and retells the creation of the universe through dance, music, and rituals.The Meitei language, or Meiteilon, is one of the oldest languages in India and is recognized for its rich literary heritage. The tribe's oral traditions, poetry, and classical texts are cherished treasures, reflecting the wisdom and creativity of the Meitei people. The traditional script, Meitei Mayek, has seen a revival in recent years, symbolizing the tribe's commitment to preserving its cultural identity.The Meitei tribe is celebrated for its exceptional artistry, particularly in weaving and handicrafts. The traditional attire, such as Phanek and Innaphi, showcases intricate designs and vibrant colors, reflecting the skill and aesthetic sensibilities of Meitei artisans. Pung Cholom, the drum dance, and the classical dance form Ras Leela are world-renowned, capturing the essence of Meitei spirituality and cultural expression.</p>
+                
+                <button class="btn"  onclick="toggleReadMore()" id="toggleBtn">Read More</button>
             </div>
         </div>
     </section>
@@ -276,6 +288,19 @@
                 nav.classList.remove('scrolled');
             }
         });
+
+        function toggleReadMore() {
+          const text = document.getElementById("text");
+          const btn = document.getElementById("toggleBtn");
+
+          text.classList.toggle("expanded");
+
+          if (text.classList.contains("expanded")) {
+              btn.innerHTML = "Read Less";
+          } else {
+              btn.innerHTML = "Read More";
+          }
+        }
     </script>
 </body>
 </html>
