@@ -27,7 +27,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--dark);
+            background-color: #2c2e3a;
             color: var(--white);
             line-height: 1.6;
         }
@@ -50,7 +50,7 @@
         }
 
         nav.scrolled {
-            background: rgba(15, 23, 42, 0.98);
+            background: #212a31;
             padding: 15px 8%;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
@@ -121,17 +121,34 @@
         }
 
         .service-card {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('./images.jpg');
-            background-size: cover;
-            background-position: center;
-           
             padding: 40px;
             border-radius: 4px;
             text-align: center;
             border-bottom: 3px solid transparent;
             transition: 0.3s;
         }
+
+        .one{
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+            url('./images.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .two{
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+            url('./image1.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .three{
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+            url('./puya.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
         .service-card:hover { border-color: var(--gold); transform: translateY(-10px); }
         .service-card h3 { color: var(--gold); margin-bottom: 15px; font-size: 1.5rem; }
 
@@ -146,7 +163,7 @@
 
         /* --- 5. FOOTER --- */
         footer {
-            background: #070b14;
+            background: #212a31;
             padding: 80px 10% 30px;
             border-top: 1px solid #1e293b;
         }
@@ -209,19 +226,19 @@
         </div>
     </section>
 
-    <section id="services" style="background: #070b14;">
+    <section id="services" style="background: #b3b4bd;">
         <div class="container">
             <h2 class="reveal fade-up" style="text-align: center; font-size: 3rem;">Know More About Meitei</h2>
             <div class="grid">
-                <div class="service-card reveal fade-up">
+                <div class="service-card one reveal fade-up">
                     <h3>Origin & History</h3>
                     <p>The Origin of Meitei dates back to upto 3000 years, making it one of the oldest tribe around the world.They have a long history of Bravery , Resilent and Pride.</p>
                 </div>
-                <div class="service-card reveal fade-up delay-1">
+                <div class="service-card two reveal fade-up delay-1">
                     <h3>Culture & Tradition</h3>
                     <p>Meitei has its own unique culture and tradition, mostly revolving around celebrating life , respect for old & youngs.</p>
                 </div>
-                <div class="service-card reveal fade-up delay-2">
+                <div class="service-card three reveal fade-up delay-2">
                     <h3>Langugae and Literature</h3>
                     <p>The Meitei have one of the world oldest script known as 'Meitei mayek' and its own scripture known as 'Puya'.</p>
                 </div>
@@ -232,10 +249,10 @@
     <section id="menu" style="padding: 0;">
         <h2 class="reveal fade-up" style="font-size: 3rem;padding: 1em;margin-top: 1em;">Explore</h2>
         <div class="gallery-grid">
-            <img class="reveal fade-up" src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=600" alt="Food 1">
-            <img class="reveal fade-up delay-1" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=600" alt="Food 2">
-            <img class="reveal fade-up delay-2" src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=600" alt="Food 3">
-            <img class="reveal fade-up delay-1" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=600" alt="Food 4">
+            <img class="reveal fade-up" src="./IMA_MARKET.webp" alt="Food 1">
+            <img class="reveal fade-up delay-1" src="./KHONGJOM-WAR-MEMORIAL.png" alt="Food 2">
+            <img class="reveal fade-up delay-2" src="./kangla.jpg" alt="Food 3">
+            <img class="reveal fade-up delay-1" src="./SHAHEED-MINAR.png" alt="Food 4">
         </div>
     </section>
 
