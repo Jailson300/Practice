@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .carousel-container {
+    position: relative;
+
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.carousel-container img {
+    width: 100%;
+    display: block;
+    height: auto;
+}
+
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <img id="carousel-img" src="" alt="Carousel Image">
+        <div id="carousel-caption" class="caption"></div>
+    </div>
+    <script>
+        const carouselData = [
+    {
+        url: "./assets/hero2.jpeg",
+        alt: "hero2",
+    },
+    {
+        url: "./assets/hero3.jpeg",
+        alt: "hero3",
+    },
+    {
+        url: "./assets/hero4.jpeg",
+        alt: "hero4",
+    }
+];
+
+let currentIndex = 0;
+
+const imgElement = document.getElementById("carousel-img");
+
+function updateCarousel() {
+    const activeImage = carouselData[currentIndex];
+    
+    imgElement.src = activeImage.url;
+    imgElement.alt = activeImage.alt;
+    currentIndex = (currentIndex + 1) % carouselData.length;
+}
+
+updateCarousel();
+
+setInterval(updateCarousel, 4000);
+    </script>
+</body>
+</html>
